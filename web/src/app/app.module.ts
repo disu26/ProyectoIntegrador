@@ -22,8 +22,8 @@ import { EditRiskComponent } from './forms/edit-risk/edit-risk.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HistoryComponent } from './history/history.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { EditProjectComponent } from './forms/edit-project/edit-project.component';
+import { PrimeNgModule } from './prime-ng/prime-ng.module';
 
 @NgModule({
   declarations: [
@@ -37,8 +37,7 @@ import { EditProjectComponent } from './forms/edit-project/edit-project.componen
     ProjectDetailComponent,
     ProjectIdComponent,
     RiskDetailComponent,
-    RiskTableComponent,
-    WelcomeComponent
+    RiskTableComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +52,7 @@ import { EditProjectComponent } from './forms/edit-project/edit-project.componen
     NgxChartsModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    PrimeNgModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

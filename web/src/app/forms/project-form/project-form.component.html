@@ -1,1 +1,159 @@
-<p>project-form works!</p>
+<div *ngIf="this.show">
+    <div class="modal-backdrop show"></div>
+    <div
+      class="modal show d-block"
+      id="FormRiskPoPUp"
+      tabindex="-1"
+      aria-labelledby="Title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="Title">Agregar un nuevo proyecto</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              (click)="closeModal()"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <!-- nombre -->
+              <div class="mb-3">
+                <label for="projectName" class="form-label"
+                  >Nombre proyecto</label
+                >
+                <input
+                  autocomplete="off"
+                  type="text"
+                  class="form-control"
+                  id="projectName"
+                  maxlength="50"
+                  name="name"
+                  [(ngModel)]="project.name"
+                  required
+                />
+                <div class="form-text">
+                  El nombre debe ser menor a 50 caracteres
+                </div>
+              </div>
+  
+              <!-- fecha inicio -->
+  
+              <div class="mb-3">
+                <label for="startDate" class="form-label">Fecha Inicio</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="startDate"
+                  name="startDate"
+                  [(ngModel)]="project.startDate"
+                  required
+                />
+              </div>
+  
+              <!-- fecha final -->
+  
+              <div class="mb-3">
+                <label for="endDate" class="form-label">Fecha Final</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="endDate"
+                  name="endDate"
+                  [(ngModel)]="project.endingDate"
+                  required
+                />
+              </div>
+  
+              <!-- etiquetas de proyecto -->
+  
+              <div class="mb-3">
+                <label for="projectTags" class="form-label"
+                  >Etiquetas proyecto</label
+                >
+                <input
+                  type="text"
+                  autocomplete="off"
+                  class="form-control"
+                  id="projectTags"
+                  required
+                  autocapitalize="characters"
+                  name="tags"
+                  [(ngModel)]="tags"
+                />
+                <div class="form-text">Deben estar separadas por ,</div>
+              </div>
+  
+              <!-- correos -->
+  
+              <div class="mb-3">
+                <label for="projectEmails" class="form-label"
+                  >Emails proyecto</label
+                >
+                <textarea
+                  class="form-control"
+                  autocomplete="off"
+                  id="projectEmails"
+                  required
+                  autocapitalize="none"
+                  [(ngModel)]="emails"
+                  name="email"
+                ></textarea>
+                <div class="form-text">Deben estar separados por ,</div>
+              </div>
+  
+              <!-- descripcion -->
+  
+              <div class="mb-3">
+                <label for="projectResume" class="form-label"
+                  >Descripcion proyecto</label
+                >
+                <textarea
+                  class="form-control"
+                  autocomplete="off"
+                  id="projectResume"
+                  maxlength="700"
+                  required
+                  name="descriptin"
+                  [(ngModel)]="project.description"
+                ></textarea>
+                <div class="form-text">
+                  La descripcion debe ser menor a 7000 caracteres
+                </div>
+              </div>
+  
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                (click)="saveProject()"
+              >
+                Guardar proyecto
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              (click)="closeModal()"
+            >
+              Cerrar
+            </button>
+          </div>
+  
+          <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+            <h5>
+              Se debe llenar todos los campos requeridos y/o agregar correos
+              válidos
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

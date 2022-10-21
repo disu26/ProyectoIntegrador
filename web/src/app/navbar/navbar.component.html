@@ -1,1 +1,28 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="['/projects']"> <h1 class="navbar-brand mb-0 h1">Gestor de Riesgos <fa-icon [icon]="faBolt"></fa-icon></h1></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        <form class="d-flex" role="search">
+            <button type="button" class="btn btn-secondary disabled" *ngIf="!afAuth.userData">
+                <fa-icon class="user-icon" [icon]="faQuestion" ></fa-icon>
+           
+            </button>
+            <button type="button" class="btn btn-secondary disabled" *ngIf="afAuth.userData">
+              <img class="user-icon" [src]="userIcon">
+            </button>
+
+            <button class="btn btn-primary mx-2" (click)="loginGoogle()" *ngIf="!afAuth.userData">
+                <fa-icon class="user-icon" [icon]="faArrowRightToBracket"></fa-icon>
+            </button>
+            <button class="btn btn-danger mx-2" (click)="logout()" *ngIf="afAuth.userData">
+                <fa-icon class="user-icon" [icon]="faArrowRightFromBracket"></fa-icon>
+            </button>
+        </form>
+      </div>
+    </div>
+  </nav>

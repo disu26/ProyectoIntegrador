@@ -1,1 +1,48 @@
-<p>project-id works!</p>
+<div class="d-grid bg-dark">
+    <h1 class="mx-5 text text-light text-center">DETALLES PROYECTO</h1>
+    <button class="btn btn-warning" [routerLink]="['/heatMap']">
+      Matriz de Calor
+    </button>
+  </div>
+  
+  <div class="d-grid bg-dark">
+    <button
+      type="button"
+      class="btn btn-dark border border-success border-4"
+      (click)="createProjectModal.show = true"
+    >
+      <fa-icon [icon]="faPenToSquare"></fa-icon>
+    </button>
+    <app-edit-project #createProjectModal [project]="project"></app-edit-project>
+  </div>
+  
+  <table class="table table-dark table-striped-columns text-center">
+    <thead>
+      <tr>
+        <th scope="col">Id Proyecto</th>
+        <th scope="col">Nombre Proyecto</th>
+        <th scope="col">Fecha Inicio</th>
+        <th scope="col">Fecha Fin</th>
+        <th scope="col">Emails</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{ this.project?.id }}</th>
+        <th scope="row">{{ this.project?.name }}</th>
+        <th scope="row">{{ this.project?.startDate }}</th>
+        <th scope="row">{{ this.project?.endingDate }}</th>
+        <th scope="row">{{ this.project?.emails }}</th>
+        <th scope="row">{{ this.project?.description }}</th>
+        <th scope="row">{{ this.project?.status }}</th>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-grid bg-dark">
+    <app-risk-table
+      [projectId]="this.project?.id"
+      [risks]="this.risks"
+    ></app-risk-table>
+  </div>
