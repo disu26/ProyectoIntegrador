@@ -1,6 +1,8 @@
-<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+<nav class="navbar navbar-expand-lg bg-light navbar-light">
     <div class="container-fluid">
-      <a class="navbar-brand" [routerLink]="['/projects']"> <h1 class="navbar-brand mb-0 h1">Gestor de Riesgos <fa-icon [icon]="faBolt"></fa-icon></h1></a>
+      <a class="navbar-brand" [routerLink]="['/projects']"> 
+        <h3 class="text-center font-weight-light text-dark my-1">GESTOR DE <em class="px-2 bg-warning">RIESGOS</em></h3>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,12 +12,10 @@
         <form class="d-flex" role="search">
             <button type="button" class="btn btn-secondary disabled" *ngIf="!afAuth.userData">
                 <fa-icon class="user-icon" [icon]="faQuestion" ></fa-icon>
-           
             </button>
             <button type="button" class="btn btn-secondary disabled" *ngIf="afAuth.userData">
               <img class="user-icon" [src]="userIcon">
             </button>
-
             <button class="btn btn-primary mx-2" (click)="loginGoogle()" *ngIf="!afAuth.userData">
                 <fa-icon class="user-icon" [icon]="faArrowRightToBracket"></fa-icon>
             </button>

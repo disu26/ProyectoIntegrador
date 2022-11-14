@@ -1,19 +1,105 @@
-<div class="d-grid bg-dark">
-    <h1 class="mx-5 text text-light text-center">PROYECTOS</h1>
-    <button
+
+<br>
+<br>
+<!-- CABECERA PRINCIPAL -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h3>
+        Proyectos
+      </h3>
+    </div>
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+      <!-- BOTON NUEVO PROYECTO-->
+      <button
       type="button"
-      class="btn btn-dark border border-success border-4"
+      class="btn btn-outline-success mx-2"
       (click)="createProjectModal.show = true"
-    >
-      <fa-icon [icon]="faFolderPlus"></fa-icon>
-    </button>
-    <button
+      >
+        <fa-icon [icon]="faFolderPlus"></fa-icon> Nuevo proyecto
+      </button>
+      <!-- BOTON HISTORIAL -->
+      <button
       type="button"
-      class="btn btn-dark border border-success border-4 my-2"
+      class="btn btn-outline-primary"
       [routerLink]="['/history']"
-    >
-      Historial
-    </button>
+      > 
+        <fa-icon [icon]="faFolderPlus"></fa-icon> Historial
+      </button>
+    
+    </div>
+  </div>
+</div>
+<br>
+
+<!-- HERRAMIENTA DE BUSQUEDA -->
+<div class="container">
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <strong> Herramientas de búsqueda </strong>
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div class="row mb-4">
+            <div class="col">
+              <!-- INPUT BUSQUEDA POR NOMBRE-->
+              <input
+              #searchName
+              pInputText
+              type="text"
+              (input)="dt.filter(searchName.value, 'name', 'contains')"
+              placeholder="Buscar por nombre"
+              class="form-control"
+              />
+            </div>
+
+            <div class="col">
+              <!-- INPUT BUSQUEDA POR FECHA INICIO-->
+              <p-calendar
+              (onSelect)="onStartDateSelect($event)"
+              (onClearClick)="dt.filter('', 'startDate', 'equals')"
+              [showButtonBar]="true"
+              placeholder="Fecha Inicio"
+              [readonlyInput]="true"
+              dateFormat="yy,M,dd"
+              inputStyleClass="form-control"
+              >
+              </p-calendar>
+            </div>
+
+            <div class="col">
+              <!-- INPUT BUSQUEDA POR FECHA FIN-->
+              <p-calendar
+              (onSelect)="onEndingDateSelect($event)"
+              (onClearClick)="dt.filter('', 'endingDate', 'equals')"
+              [showButtonBar]="true"
+              styleClass="p-column-filter"
+              placeholder="Fecha Cierre"
+              [readonlyInput]="true"
+              dateFormat="yy,M,dd"
+              class="calendar-control"
+              inputStyleClass="form-control"
+              >
+              </p-calendar>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<br><br>
+
+<!-- TABLE -->
+<div class="container">
+<div>
+  <div>
     <app-project-form #createProjectModal></app-project-form>
   </div>
   <p-table
@@ -24,61 +110,24 @@
     [rowHover]="true"
     [rows]="30"
     [showCurrentPageReport]="true"
-    [loading]="loading"
     [paginator]="true"
     [filterDelay]="0"
-    class="table table-dark table-striped table-hover text-center"
+    class="table table-striped table-hover text-center"
   >
     <ng-template pTemplate="header">
-      <tr>
-        <th pSortableColumn="name">
+      <tr class="header-table">
+        <th pSortableColumn="name" class="title">
           Nombre del proyecto <p-sortIcon field="name"></p-sortIcon>
         </th>
-        <th pSortableColumn="startDate">
+        <th pSortableColumn="startDate" class="title">
           Fecha de Inicio <p-sortIcon field="startDate"></p-sortIcon>
         </th>
-        <th pSortableColumn="endedDate">
+        <th pSortableColumn="endedDate" class="title">
           Fecha de cierre <p-sortIcon field="endedDate"></p-sortIcon>
         </th>
-        <th>Emails</th>
-        <th>Descripción</th>
-        <th colspan="2">Acciones</th>
-      </tr>
-      <tr>
-        <th>
-          <input
-            #searchName
-            pInputText
-            type="text"
-            (input)="dt.filter(searchName.value, 'name', 'contains')"
-            placeholder="Buscar por nombre"
-          />
-        </th>
-        <th>
-          <p-calendar
-            (onSelect)="onStartDateSelect($event)"
-            (onClearClick)="dt.filter('', 'startDate', 'equals')"
-            [showButtonBar]="true"
-            styleClass="p-column-filter"
-            placeholder="Fecha Inicio"
-            [readonlyInput]="true"
-            dateFormat="yy,M,dd"
-          >
-          </p-calendar>
-        </th>
-        <th>
-          <p-calendar
-            (onSelect)="onEndingDateSelect($event)"
-            (onClearClick)="dt.filter('', 'endingDate', 'equals')"
-            [showButtonBar]="true"
-            styleClass="p-column-filter"
-            placeholder="Fecha Cierre"
-            [readonlyInput]="true"
-            dateFormat="yy,M,dd"
-          >
-          </p-calendar>
-        </th>
-        <th></th>
+        <th class="title">Emails </th>
+        <th class="title">Descripción </th>
+        <th colspan="2" class="title">Acciones </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-project>
@@ -206,3 +255,5 @@
       </tr>
     </ng-template>
   </p-table>
+</div>
+</div>

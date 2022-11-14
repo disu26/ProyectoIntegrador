@@ -1,0 +1,35 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url(https://colorlib.com/etc/tb/Table_Responsive_v2/fonts/poppins/Poppins-Regular.ttf)
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url(https://colorlib.com/etc/tb/Table_Responsive_v2/fonts/poppins/Poppins-Bold.ttf)
+}
+
+
+tr:hover {background-color: #f2f2f2;}
+tr:nth-child(even){background-color: #f2f2f2;}
+.header-table:hover {background-color: coral;}
+
+td, th {
+    padding: 8px;
+}
+
+.header-table {
+    background-color: #6c7ae0;
+    color: whitesmoke;
+    font-family: Poppins-Regular;
+}
+
+.title {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.dd-style {
+    width: 100% !important;
+    background-color: greenyellow;
+}
+

@@ -1,0 +1,23 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url(https://colorlib.com/etc/tb/Table_Responsive_v2/fonts/poppins/Poppins-Regular.ttf)
+}
+
+tr:hover {background-color: #f2f2f2;}
+tr:nth-child(even){background-color: #f2f2f2;}
+.header-table:hover {background-color: coral;}
+
+.header-table {
+    background-color: #6c7ae0;
+    color: whitesmoke;
+    font-family: Poppins-Regular;
+}
+
+.contenedor{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+td, th {
+    padding: 10px;
+}
