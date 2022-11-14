@@ -1,3 +1,9 @@
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url(https://colorlib.com/etc/tb/Table_Responsive_v2/fonts/poppins/Poppins-Regular.ttf)
+}
+
 :host ::ng-deep {
     .p-paginator {
         .p-paginator-current {
@@ -18,13 +24,6 @@
         justify-content: space-between;
     }
     
-    .p-calendar .p-datepicker {
-        min-width: 15rem;
-        background-color: rgb(26, 24, 24);  
-        td {
-            font-weight: 400;
-        }
-    }
     
     .p-datatable.p-datatable-risks {
         .p-datatable-header {
@@ -93,5 +92,28 @@
             }
         }
     }
+}
 
+tr:hover {background-color: #f2f2f2;}
+tr:nth-child(even){background-color: #f2f2f2;}
+.header-table:hover {background-color: coral;}
+
+.header-table {
+    background-color: #6c7ae0;
+    color: whitesmoke;
+    font-family: Poppins-Regular;
+}
+
+.contenedor{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+td, th {
+    padding: 10px;
+}
+
+.btn-new-r{
+    background-color: slateblue;
+    color: whitesmoke;
 }

@@ -1,47 +1,54 @@
-<p-table #dt [value]="history" dataKey="id" [rowHover]="true" [rows] = "20" 
-[showCurrentPageReport]="true" styleClass="table table-dark table-striped table-hover text-center">
-    <ng-template pTemplate="header" >
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Fecha del cambio
-            </th>
-            <th>
-                Hora del cambio
-            </th>
-            <th>
-                Nombre del proyecto
-            </th>
-            <th>
-                Fecha Inicio
-            </th>
-            <th>
-                Fecha Cierre
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-his>
-        <tr class="p-selectable-row">
-            <td>
-                {{his.id}}
-            </td>
-            <td>
-                {{his.date}}
-            </td>
-            <td>
-                {{his.time}}
-            </td>
-            <td >
-                {{his.project.name}}
-            </td>
-            <td >
-                {{his.project.startDate}}
-            </td>
-            <td >
-                {{his.project.endingDate}}
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
+<br>
+<div class="container text-center">
+    <h2 class="text-center font-weight-light text-dark my-1"><em class="px-2 bg-warning">HISTORIAL DE CAMBIOS</em></h2>
+</div>
+<br>
+<div class="contenedor">
+    <p-table #dt [value]="history" dataKey="id" [rowHover]="true" [rows] = "20" 
+    [showCurrentPageReport]="true" class="table table-striped table-hover text-center">
+        <ng-template pTemplate="header" >
+            <tr class="header-table">
+                <th class="title">
+                    Id
+                </th>
+                <th class="title">
+                    Fecha del cambio
+                </th>
+                <th class="title">
+                    Hora del cambio
+                </th>
+                <th class="title">
+                    Nombre del proyecto
+                </th>
+                <th class="title">
+                    Fecha Inicio
+                </th>
+                <th class="title">
+                    Fecha Cierre
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-his>
+            <tr class="p-selectable-row">
+                <td>
+                    {{his.id}}
+                </td>
+                <td>
+                    {{his.date}}
+                </td>
+                <td>
+                    {{his.time}}
+                </td>
+                <td >
+                    {{his.project.name}}
+                </td>
+                <td >
+                    {{his.project.startDate}}
+                </td>
+                <td >
+                    {{his.project.endingDate}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,79 +1,134 @@
-<div class="card text-center">
-    <div class="card-header bg-dark text-light text-center d-grid">
-      <h1>{{ this.risk?.name || "Loading ..." }}</h1>
-      <button class="btn btn-dark border border-warning border-4"
-        data-bs-toggle="modal"
-        data-bs-target="#FormRiskPoPUp"
-      >
-        <fa-icon [icon]="faPenToSquare"></fa-icon>
-      </button>
-    </div>
-    <div class="card-body" style="margin-right: 40px; margin-left: 40px">
-      <app-edit-risk [risk]="risk"></app-edit-risk>
-  
-      <h5><b>Fecha de detección: </b> {{ this.risk?.detectedDate }}</h5>
-      <h5><b>Fecha de cierre: </b> {{ this.risk?.endedDate }}</h5>
-      <!-- nota:eliminar br -->
-      <br />
-      <h5><b>Descripción del riesgo:</b></h5>
-      <p>{{ this.risk?.description }}</p>
-      <br />
-      <h5><b>Estado del riesgo: </b> {{ this.risk?.riskState }}</h5>
-      <h5><b>Audiencia: </b> {{ this.risk?.audience }}</h5>
-      <h5><b>Categoría : </b> {{ this.risk?.category }}</h5>
-      <h5><b>Tipo de riesgo: </b> {{ this.risk?.riskType }}</h5>
-  
-      <!-- nota:eliminar br -->
-      <br />
-      <h5><b>Detalles del tipo de riesgo:</b></h5>
-      <p>{{ this.risk?.detailsRiskType }}</p>
-      <br />
-  
-      <h5>
-        <b>Probabilidad de que ocurra el riesgo: </b>
-        {{ this.risk?.probability }}
-      </h5>
-      <h5>
-        <b>Valor de impacto si ocurre el riesgo: </b>
-        {{ this.risk?.impactValue }}
-      </h5>
-      <!-- nota:eliminar br -->
-      <br />
-      <h5><b>Descripción plan de mitigación:</b></h5>
-      <p>{{ this.risk?.mitigationPlan }}</p>
-      <br />
-      <h5>
-        <b>Correos de las personas responsables del plan de mitigación:</b>
-      </h5>
-      <ul
-        class="list-group"
-        *ngFor="let email of this.risk?.responsibleMitigationMails"
-      >
-        <li class="list-group-item">{{ email }}</li>
-      </ul>
-  
-      <!-- nota:eliminar br -->
-      <br />
-      <h5><b>Descripción plan de contingencia:</b></h5>
-      <p>{{ this.risk?.contingencyPlan }}</p>
-      <br />
-  
-      <h5>
-        <b>Correos de las personas responsables del plan de contingencia:</b>
-      </h5>
-      <ul
-        class="list-group"
-        *ngFor="let email of this.risk?.responsibleContingencyMails"
-      >
-        <li class="list-group-item">{{ email }}</li>
-      </ul>
-      <br />
-  
-      <h5>
-        <b>Etiquetas:</b>
-      </h5>
-      <ul class="list-group" *ngFor="let label of this.risk?.labels">
-        <li class="list-group-item">{{ label }}</li>
-      </ul>
+<br>
+<div class="container text-center">
+  <h2 class="text-center font-weight-light text-dark my-1"><em class="px-2 bg-warning">DETALLES DEL RIESGO</em></h2>
+</div>
+
+<div class="container mt-5 mb-3 border">
+  <div class="row">
+    <div class="col">
+      <div class="mt-5">
+        <div class="progress">
+          <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0"
+            aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="card p-3 mb-2">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div class="icon"> <i>⚡</i> </div>
+            <div class="ms-2 c-details">
+              <h3>{{ this.risk?.name || "Loading ..." }}</h3>
+            </div>
+          </div>
+          <div class="badge"> <span>NIVEL DE RIESGO</span> </div>
+        </div>
+        <div class="mt-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <app-edit-risk [risk]="risk"></app-edit-risk>
+                <p><b>Fecha de detección: </b> {{ this.risk?.detectedDate }}</p>
+                <p><b>Fecha de cierre: </b> {{ this.risk?.endedDate }}</p>
+                <p><b>Descripción del riesgo:</b> {{ this.risk?.description }}</p>
+                <p><b>Estado del riesgo: </b> {{ this.risk?.riskState }}</p>
+                <p><b>Audiencia: </b> {{ this.risk?.audience }}</p>
+                <p><b>Categoría : </b> {{ this.risk?.category }}</p>
+                <p><b>Tipo de riesgo: </b> {{ this.risk?.riskType }}</p>
+              </div>
+              <div class="col-sm">
+                <p><b>Detalles del tipo de riesgo:</b> {{ this.risk?.detailsRiskType }}</p>
+                <p> <b>Probabilidad de que ocurra el riesgo: </b> {{ this.risk?.probability }}</p>
+                <p> <b>Valor de impacto si ocurre el riesgo: </b> {{ this.risk?.impactValue }}</p>
+                <p><b>Descripción plan de mitigación:</b> {{ this.risk?.mitigationPlan }}</p>
+                <p><b>Descripción plan de contingencia:</b> {{ this.risk?.contingencyPlan }}</p>
+              </div>
+              <div class="col-sm">
+                <p><b>Correos de las personas responsables del plan de mitigación:</b></p>
+                <ul class="list-group" *ngFor="let email of this.risk?.responsibleMitigationMails">
+                  <li class="list-group-item">{{ email }}</li>
+                </ul>
+                <p><b>Correos de las personas responsables del plan de contingencia:</b></p>
+                <ul class="list-group" *ngFor="let email of this.risk?.responsibleContingencyMails">
+                  <li class="list-group-item">{{ email }}</li>
+                </ul>
+                <p><b>Etiquetas:</b></p>
+                <ul class="list-group" *ngFor="let label of this.risk?.labels">
+                  <li class="list-group-item">{{ label }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+
+<!--
+  <div class="card text-center">
+  <div class="card-header bg-dark text-light text-center d-grid">
+    <h1>{{ this.risk?.name || "Loading ..." }}</h1>
+    <button class="btn btn-dark border border-warning border-4" data-bs-toggle="modal" data-bs-target="#FormRiskPoPUp">
+      <fa-icon [icon]="faPenToSquare"></fa-icon>
+    </button>
+  </div>
+  <div class="card-body" style="margin-right: 40px; margin-left: 40px">
+    <app-edit-risk [risk]="risk"></app-edit-risk>
+
+    <h5><b>Fecha de detección: </b> {{ this.risk?.detectedDate }}</h5>
+    <h5><b>Fecha de cierre: </b> {{ this.risk?.endedDate }}</h5>
+    <br />
+    <h5><b>Descripción del riesgo:</b></h5>
+    <p>{{ this.risk?.description }}</p>
+    <br />
+    <h5><b>Estado del riesgo: </b> {{ this.risk?.riskState }}</h5>
+    <h5><b>Audiencia: </b> {{ this.risk?.audience }}</h5>
+    <h5><b>Categoría : </b> {{ this.risk?.category }}</h5>
+    <h5><b>Tipo de riesgo: </b> {{ this.risk?.riskType }}</h5>
+
+    <br />
+    <h5><b>Detalles del tipo de riesgo:</b></h5>
+    <p>{{ this.risk?.detailsRiskType }}</p>
+    <br />
+
+    <h5>
+      <b>Probabilidad de que ocurra el riesgo: </b>
+      {{ this.risk?.probability }}
+    </h5>
+    <h5>
+      <b>Valor de impacto si ocurre el riesgo: </b>
+      {{ this.risk?.impactValue }}
+    </h5>
+    <br />
+    <h5><b>Descripción plan de mitigación:</b></h5>
+    <p>{{ this.risk?.mitigationPlan }}</p>
+    <br />
+    <h5>
+      <b>Correos de las personas responsables del plan de mitigación:</b>
+    </h5>
+    <ul class="list-group" *ngFor="let email of this.risk?.responsibleMitigationMails">
+      <li class="list-group-item">{{ email }}</li>
+    </ul>
+
+    <br />
+    <h5><b>Descripción plan de contingencia:</b></h5>
+    <p>{{ this.risk?.contingencyPlan }}</p>
+    <br />
+
+    <h5>
+      <b>Correos de las personas responsables del plan de contingencia:</b>
+    </h5>
+    <ul class="list-group" *ngFor="let email of this.risk?.responsibleContingencyMails">
+      <li class="list-group-item">{{ email }}</li>
+    </ul>
+    <br />
+
+    <h5>
+      <b>Etiquetas:</b>
+    </h5>
+    <ul class="list-group" *ngFor="let label of this.risk?.labels">
+      <li class="list-group-item">{{ label }}</li>
+    </ul>
+  </div>
+</div>
+-->
