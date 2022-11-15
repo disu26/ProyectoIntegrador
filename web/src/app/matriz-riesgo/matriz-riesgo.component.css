@@ -1,0 +1,22 @@
+td, th {
+    border: 1px solid lightgrey;
+    text-align: center;
+    font-weight: bold;
+}
+
+tr th {
+    text-align: center;
+}
+
+.green {
+    background-color: #34ab54;
+    color: white;
+}
+
+.red {
+    background-color: #eb4333;
+}
+
+.yellow {
+    background-color: #fbbc04;
+}

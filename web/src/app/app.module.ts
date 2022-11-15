@@ -24,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HistoryComponent } from './history/history.component';
 import { EditProjectComponent } from './forms/edit-project/edit-project.component';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
+import { MatrizRiesgoComponent } from './matriz-riesgo/matriz-riesgo.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PrimeNgModule } from './prime-ng/prime-ng.module';
     ProjectDetailComponent,
     ProjectIdComponent,
     RiskDetailComponent,
-    RiskTableComponent
+    RiskTableComponent,
+    MatrizRiesgoComponent
   ],
   imports: [
     BrowserModule,
