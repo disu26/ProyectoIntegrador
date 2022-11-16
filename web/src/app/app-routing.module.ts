@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'projects', component: ProjectDetailComponent },
   { path: 'riskDetail/:projectId/:riskId', component: RiskDetailComponent },
   { path: 'history', component: HistoryComponent },
-  { path: 'matriz', component: MatrizRiesgoComponent },
+  { path: 'matriz/:id', component: MatrizRiesgoComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'projects' },
 ];
 

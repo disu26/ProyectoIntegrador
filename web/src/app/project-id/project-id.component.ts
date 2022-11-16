@@ -14,7 +14,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 export class ProjectIdComponent implements OnInit {
   project: Project | undefined;
   risks: Risk[] = [];
-  id: string | undefined;
+  id!: string | null;
   faFolderPlus = faFolderPlus;
   faPenToSquare = faPenToSquare;
 
@@ -27,6 +27,7 @@ export class ProjectIdComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    this.id = id;
     this.getProject(`${id}`);
   }
 

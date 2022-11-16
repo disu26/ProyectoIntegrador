@@ -6,12 +6,14 @@ import { Risk } from '../models/risk';
 @Component({
   selector: 'app-matriz-riesgo',
   templateUrl: './matriz-riesgo.component.html',
-  styleUrls: ['./matriz-riesgo.component.css']
+  styleUrls: ['./matriz-riesgo.component.css'],
 })
 export class MatrizRiesgoComponent implements OnInit {
   risk!: Risk;
 
   cols!: any[];
+
+  id!: string | null;
 
   _selectedEstados!: any[];
 
@@ -23,12 +25,12 @@ export class MatrizRiesgoComponent implements OnInit {
     [0, 0, 0, 0, 0],
   ];
 
-  constructor(
-    private service: ProjectService,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private service: ProjectService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.id = id;
+
     this.metodoInicial();
 
     this.cols = [
@@ -50,7 +52,7 @@ export class MatrizRiesgoComponent implements OnInit {
     this._selectedEstados = this.cols.filter((col) => val.includes(col));
 
     // limpiar la matriz
-    this.matrizBi =  [
+    this.matrizBi = [
       [0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0],
@@ -66,79 +68,69 @@ export class MatrizRiesgoComponent implements OnInit {
 
     //filtros para la matriz
     this._selectedEstados.filter((col) => {
-      if (col.field === "Abierto") {
+      if (col.field === 'Abierto') {
         this.metodoAbierto();
-      } else if (col.field === "Mitigado") {
+      } else if (col.field === 'Mitigado') {
         this.metodoMitigado();
-      } else if (col.field === "Cerrado") {
+      } else if (col.field === 'Cerrado') {
         this.metodoCerrado();
-      } else if (col.field === "Problema") {
+      } else if (col.field === 'Problema') {
         this.metodoProblema();
       }
     });
-
   }
 
   metodoInicial() {
-    this.route.parent?.params.subscribe((params) => {
-      this.service.getProject(params['id']).subscribe((data) => {
-        for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
-          this.risk = data.risks[riesgo];
-          this.pintarMatriz();
+    this.service.getProject(this.id!).subscribe((data) => {
+      for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
+        this.risk = data.risks[riesgo];
+        console.log(data.risks[riesgo]);
+        this.pintarMatriz();
       }
-      });
     });
   }
 
   metodoAbierto() {
-    this.route.parent?.params.subscribe((params) => {
-      this.service.getProject(params['id']).subscribe((data) => {
-        for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
-          this.risk = data.risks[riesgo];
-          if (this.risk.riskState === "Abierto") {
-            this.pintarMatriz();
-          }
+    this.service.getProject(this.id!).subscribe((data) => {
+      for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
+        this.risk = data.risks[riesgo];
+        if (this.risk.riskState === 'Abierto') {
+          this.pintarMatriz();
         }
-      });
+      }
     });
   }
 
   metodoMitigado() {
-    this.route.parent?.params.subscribe((params) => {
-      this.service.getProject(params['id']).subscribe((data) => {
-        for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
-          this.risk = data.risks[riesgo];
-          if (this.risk.riskState === "Mitigado") {
-            this.pintarMatriz();
-          }
+    this.service.getProject(this.id!).subscribe((data) => {
+      for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
+        this.risk = data.risks[riesgo];
+        if (this.risk.riskState === 'Mitigado') {
+          this.pintarMatriz();
         }
-      });
+      }
     });
   }
 
   metodoCerrado() {
-    this.route.parent?.params.subscribe((params) => {
-      this.service.getProject(params['id']).subscribe((data) => {
-        for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
-          this.risk = data.risks[riesgo];
-          if (this.risk.riskState === "Cerrado") {
-            this.pintarMatriz();
-          }
+    this.service.getProject(this.id!).subscribe((data) => {
+      for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
+        this.risk = data.risks[riesgo];
+        if (this.risk.riskState === 'Cerrado') {
+          this.pintarMatriz();
         }
-      });
+      }
     });
   }
 
   metodoProblema() {
-    this.route.parent?.params.subscribe((params) => {
-      this.service.getProject(params['id']).subscribe((data) => {
-        for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
-          this.risk = data.risks[riesgo];
-          if (this.risk.riskState === "Problema") {
-            this.pintarMatriz();
-          }
+    this.service.getProject(this.id!).subscribe((data) => {
+      for (let riesgo = 0; riesgo < data.risks.length; riesgo++) {
+        this.risk = data.risks[riesgo];
+        if (this.risk.riskState === 'Problema') {
+          this.pintarMatriz();
         }
-      });
+      }
     });
   }
 
@@ -154,5 +146,4 @@ export class MatrizRiesgoComponent implements OnInit {
       }
     }
   }
-
 }

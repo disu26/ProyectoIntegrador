@@ -18,7 +18,6 @@ export class EditProjectComponent implements OnInit {
   constructor(private service: ProjectService) {}
 
   ngOnInit(): void {
-    console.log(this.emails), this.tags;
     this.errorMessage = false;
   }
 
@@ -55,12 +54,8 @@ export class EditProjectComponent implements OnInit {
 
   getvalues() {
     this.tags = this.project?.labels.join(',');
-    console.log('3' + this.tags);
-    console.log('4' + this.project?.labels);
 
     this.emails = this.project?.emails.join(',');
-    console.log('1' + this.emails);
-    console.log('2' + this.project?.emails);
   }
 
   closeModal() {

@@ -28,6 +28,12 @@ export class RiskTableComponent implements OnInit {
 
   loading: boolean = true;
 
+  occurrence?: string;
+
+  impactValue?: string;
+
+  criticidad?: number;
+
   faHeartCirclePlus = faHeartCirclePlus;
   faArrowUpRightFromSquare = faArrowUpRightFromSquare;
   faTrashCan = faTrashCan;
@@ -98,5 +104,54 @@ export class RiskTableComponent implements OnInit {
         window.location.reload();
       }, 1000);
     });
+  }
+
+  criticalityLevelCalculation(risk: Risk) {
+    if (this.occurrence != undefined) {
+      risk.probability = Number(this.occurrence);
+    }
+    if (this.impactValue != undefined) {
+      risk.impactValue = Number(this.impactValue);
+    }
+
+    if (
+      risk.probability === 0 ||
+      risk.impactValue === 0 ||
+      risk.impactValue == undefined ||
+      risk.probability == undefined
+    ) {
+      this.criticidad = 4;
+
+      return;
+    }
+    if (
+      (risk.probability === 1 && risk.impactValue === 1) ||
+      (risk.probability === 2 && risk.impactValue === 1) ||
+      (risk.probability === 3 && risk.impactValue === 1) ||
+      (risk.probability === 4 && risk.impactValue === 1) ||
+      (risk.probability === 1 && risk.impactValue === 2) ||
+      (risk.probability === 2 && risk.impactValue === 2) ||
+      (risk.probability === 1 && risk.impactValue === 3)
+    ) {
+      this.criticidad = 1;
+
+      return;
+    }
+
+    if (
+      (risk.probability === 5 && risk.impactValue === 1) ||
+      (risk.probability === 5 && risk.impactValue === 2) ||
+      (risk.probability === 4 && risk.impactValue === 2) ||
+      (risk.probability === 3 && risk.impactValue === 2) ||
+      (risk.probability === 3 && risk.impactValue === 3) ||
+      (risk.probability === 2 && risk.impactValue === 3) ||
+      (risk.probability === 2 && risk.impactValue === 4) ||
+      (risk.probability === 1 && risk.impactValue === 4) ||
+      (risk.probability === 1 && risk.impactValue === 5)
+    ) {
+      this.criticidad = 2;
+    }
+
+    this.criticidad = 3;
   }
 }
