@@ -1,62 +1,80 @@
-<p-table [columns]="selectedEstados" [value]="matrizBi"  responsiveLayout="scroll">
+<div class="container mt-5 mb-3">
+  <button class="btn btn-success mx-2" [routerLink]="['/project', id]">
+    Volver
+  </button>
+</div>
+
+<div class="container mt-5 mb-3 border">
+  <p-table
+    [columns]="selectedEstados"
+    [value]="matrizBi"
+    responsiveLayout="scroll"
+  >
     <ng-template pTemplate="caption">
-      <p-multiSelect [options]="cols" [(ngModel)]="selectedEstados" optionLabel="header"
-      selectedItemsLabel="Todos los estados seleccionados" [style]="{minWidth: '200px'}" placeholder="Elige Un Estado"></p-multiSelect>
+      <p-multiSelect
+        [options]="cols"
+        [(ngModel)]="selectedEstados"
+        optionLabel="header"
+        selectedItemsLabel="Todos los estados seleccionados"
+        [style]="{ minWidth: '200px' }"
+        placeholder="Elige Un Estado"
+      ></p-multiSelect>
     </ng-template>
     <ng-template pTemplate="header">
-          <!-- row 1 -->
-          <tr>
-              <th>Frecuente</th>
-              <td class="yellow">{{matrizBi[4][0]}}</td>
-              <td class="yellow">{{matrizBi[4][1]}}</td>
-              <td class="red">{{matrizBi[4][2]}}</td>
-              <td class="red">{{matrizBi[4][3]}}</td>
-              <td class="red">{{matrizBi[4][4]}}</td>
-          </tr>
-          <!-- row 2 -->
-          <tr>
-              <th>Probable</th>
-              <td class="green">{{matrizBi[3][0]}}</td>
-              <td class="yellow">{{matrizBi[3][1]}}</td>
-              <td class="red">{{matrizBi[3][2]}}</td>
-              <td class="red">{{matrizBi[3][3]}}</td>
-              <td class="red">{{matrizBi[3][4]}}</td>
-          </tr>
-          <!-- row 3 -->
-          <tr>
-              <th>Ocasional</th>
-              <td class="green">{{matrizBi[2][0]}}</td>
-              <td class="yellow">{{matrizBi[2][1]}}</td>
-              <td class="yellow">{{matrizBi[2][2]}}</td>
-              <td class="red">{{matrizBi[2][3]}}</td>
-              <td class="red">{{matrizBi[2][4]}}</td>
-          </tr>
-          <!-- row 4 -->
-          <tr>
-              <th>Posible</th>
-              <td class="green">{{matrizBi[1][0]}}</td>
-              <td class="green">{{matrizBi[1][1]}}</td>
-              <td class="yellow">{{matrizBi[1][2]}}</td>
-              <td class="yellow">{{matrizBi[1][3]}}</td>
-              <td class="red">{{matrizBi[1][4]}}</td>
-          </tr>
-          <!-- row 5 -->
-          <tr>
-              <th>Improbable</th>
-              <td class="green">{{matrizBi[0][0]}}</td>
-              <td class="green">{{matrizBi[0][1]}}</td>
-              <td class="green">{{matrizBi[0][2]}}</td>
-              <td class="yellow">{{matrizBi[0][3]}}</td>
-              <td class="yellow">{{matrizBi[0][4]}}</td>
-          </tr>
-          <!-- Options -->
-          <tr>
-              <th></th>
-              <th>Insignificante</th>
-              <th>Menor</th>
-              <th>Moderado</th>
-              <th>Mayor</th>
-              <th>Catastrófico</th>
-          </tr>
-      </ng-template>
+      <!-- row 1 -->
+      <tr>
+        <th>Frecuente</th>
+        <td class="yellow">{{ matrizBi[4][0] }}</td>
+        <td class="yellow">{{ matrizBi[4][1] }}</td>
+        <td class="red">{{ matrizBi[4][2] }}</td>
+        <td class="red">{{ matrizBi[4][3] }}</td>
+        <td class="red">{{ matrizBi[4][4] }}</td>
+      </tr>
+      <!-- row 2 -->
+      <tr>
+        <th>Probable</th>
+        <td class="green">{{ matrizBi[3][0] }}</td>
+        <td class="yellow">{{ matrizBi[3][1] }}</td>
+        <td class="red">{{ matrizBi[3][2] }}</td>
+        <td class="red">{{ matrizBi[3][3] }}</td>
+        <td class="red">{{ matrizBi[3][4] }}</td>
+      </tr>
+      <!-- row 3 -->
+      <tr>
+        <th>Ocasional</th>
+        <td class="green">{{ matrizBi[2][0] }}</td>
+        <td class="yellow">{{ matrizBi[2][1] }}</td>
+        <td class="yellow">{{ matrizBi[2][2] }}</td>
+        <td class="red">{{ matrizBi[2][3] }}</td>
+        <td class="red">{{ matrizBi[2][4] }}</td>
+      </tr>
+      <!-- row 4 -->
+      <tr>
+        <th>Posible</th>
+        <td class="green">{{ matrizBi[1][0] }}</td>
+        <td class="green">{{ matrizBi[1][1] }}</td>
+        <td class="yellow">{{ matrizBi[1][2] }}</td>
+        <td class="yellow">{{ matrizBi[1][3] }}</td>
+        <td class="red">{{ matrizBi[1][4] }}</td>
+      </tr>
+      <!-- row 5 -->
+      <tr>
+        <th>Improbable</th>
+        <td class="green">{{ matrizBi[0][0] }}</td>
+        <td class="green">{{ matrizBi[0][1] }}</td>
+        <td class="green">{{ matrizBi[0][2] }}</td>
+        <td class="yellow">{{ matrizBi[0][3] }}</td>
+        <td class="yellow">{{ matrizBi[0][4] }}</td>
+      </tr>
+      <!-- Options -->
+      <tr>
+        <th></th>
+        <th>Insignificante</th>
+        <th>Menor</th>
+        <th>Moderado</th>
+        <th>Mayor</th>
+        <th>Catastrófico</th>
+      </tr>
+    </ng-template>
   </p-table>
+</div>

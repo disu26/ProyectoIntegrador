@@ -16,7 +16,7 @@ export class RiskDetailComponent implements OnInit {
   faHeartCirclePlus = faHeartCirclePlus;
   project: Project | undefined;
   risks: Risk[] = [];
-  projectId: string | undefined;
+  projectId?: string | null;
   riskId: string | undefined;
 
   projects: Project[] | undefined;
@@ -33,6 +33,7 @@ export class RiskDetailComponent implements OnInit {
   ngOnInit(): void {
     const projectId = this.route.snapshot.paramMap.get('projectId');
     const riskId = this.route.snapshot.paramMap.get('riskId');
+    this.projectId = projectId;
     this.getProject(`${projectId}`, `${riskId}`);
   }
 
